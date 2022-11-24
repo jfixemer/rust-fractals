@@ -3,17 +3,17 @@ use image::{ImageBuffer};
 use num_complex::{self, Complex32};
 use clap::Parser;
 
-/// Simple program to greet a person
+/// Simple program to generate Julia or Mandelbrot fractal images.
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
-   #[arg(long, short, default_value="")]
+   #[arg(long, short, default_value="", hide_default_value=true, help="Write Julia fractal image to the specifed file.")]
    julia: String,
 
-   #[arg(long,default_value_t=-0.4,visible_alias="jr", env="JULIA_REAL")]
+   #[arg(long,default_value_t=-0.4,visible_alias="jr", env="JULIA_RE")]
    julia_c_real: f32,
 
-   #[arg(long,default_value_t=0.6,visible_alias="ji", env="JULIA_IMGINARY")]
+   #[arg(long,default_value_t=0.6,visible_alias="ji", env="JULIA_IM")]
    julia_c_imaginary: f32,
 
    #[arg(long,default_value_t=0.0,visible_alias="cr", env="CENTER_X")]
@@ -25,13 +25,13 @@ struct Args {
    #[arg(long,short,default_value_t=3.0, env="SCALE")]
    scale: f32,
 
-   #[arg(long,default_value_t=800,env="FRACTAL_WIDTH")]
+   #[arg(long,default_value_t=800,env="FRACTAL_WIDTH", help="Image WIDTH in pixels.")]
    width: u32,
 
-   #[arg(long,default_value_t=800,env="FRACTAL_HEIGHT")]
+   #[arg(long,default_value_t=800,env="FRACTAL_HEIGHT", help="Image HEIGHT in pixels.")]
    height: u32,
 
-   #[arg(long, short, default_value="")]
+   #[arg(long, short, default_value="", hide_default_value=true, help="Write Mandlebrot fractal image to the specified file.")]
    mandlebrot: String,
 }
 
