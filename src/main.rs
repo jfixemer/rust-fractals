@@ -10,25 +10,25 @@ struct Args {
    #[arg(long, short, default_value="")]
    julia: String,
 
-   #[arg(long,default_value_t=-0.4,visible_alias="jr")]
+   #[arg(long,default_value_t=-0.4,visible_alias="jr", env="JULIA_REAL")]
    julia_c_real: f32,
 
-   #[arg(long,default_value_t=0.6,visible_alias="ji")]
+   #[arg(long,default_value_t=0.6,visible_alias="ji", env="JULIA_IMGINARY")]
    julia_c_imaginary: f32,
 
-   #[arg(long,default_value_t=0.0,visible_alias="cr")]
+   #[arg(long,default_value_t=0.0,visible_alias="cr", env="CENTER_X")]
    center_real: f32,
 
-   #[arg(long,default_value_t=0.0,visible_alias="ci")]
+   #[arg(long,default_value_t=0.0,visible_alias="ci", env="CENTER_Y")]
    center_imaginary: f32,
 
-   #[arg(long,short,default_value_t=3.0)]
+   #[arg(long,short,default_value_t=3.0, env="SCALE")]
    scale: f32,
 
-   #[arg(long,default_value_t=800)]
+   #[arg(long,default_value_t=800,env="FRACTAL_WIDTH")]
    width: u32,
 
-   #[arg(long,default_value_t=800)]
+   #[arg(long,default_value_t=800,env="FRACTAL_HEIGHT")]
    height: u32,
 
    #[arg(long, short, default_value="")]
